@@ -43,6 +43,19 @@ function EmailsContainer(props) {
     setdata(filteredData);
   };
 
+  const onEmailClick = (id) => {
+    const emails = data.map((email) => {
+      if (email.id === id)
+        return {
+          ...email,
+          status: "READ",
+        };
+      else return email;
+    });
+
+    setdata(emails);
+  };
+
   return (
     <div class='emails-container border-2 border-gray-200 shadow-lg grid grid-rows-6 bg-gray-100'>
       <div class='row-span-1 h-full bg-gray-200'>
@@ -58,6 +71,7 @@ function EmailsContainer(props) {
           emails={data}
           onEmailRowSelect={onEmailRowSelect}
           selectedEmails={selectedEmails}
+          onEmailClick={onEmailClick}
         />
       </div>
     </div>
