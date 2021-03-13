@@ -8,19 +8,57 @@ import { EMAILS } from "../mockdata/data";
 function EmailsContainer(props) {
   const contextData = useContext(AppContext);
   const [data, setdata] = useState([]);
+  const [selectedEmails, setselectedEmails] = useState([]);
 
   useEffect(() => {
     if (contextData.activeMailbox === "Inbox") return setdata(EMAILS);
     else setdata([]);
   }, [contextData.activeMailbox]);
 
+  const onEmailRowSelect = (id) => {
+    if (selectedEmails.includes(id)) {
+      const ids = selectedEmails.filter((eId) => eId != id);
+      setselectedEmails(ids);
+    } else {
+      const ids = [...selectedEmails];
+      ids.push(id);
+      setselectedEmails(ids);
+    }
+  };
+
+  const selectAll = () => {
+    if (selectedEmails.length === data.length) {
+      setselectedEmails([]);
+    } else {
+      const ids = [];
+      data.forEach((email) => ids.push(email.id));
+      setselectedEmails(ids);
+    }
+  };
+
+  const onDeleteClick = () => {
+    const filteredData = data.filter(
+      (email) => !selectedEmails.includes(email.id)
+    );
+    setdata(filteredData);
+  };
+
   return (
     <div class='emails-container border-2 border-gray-200 shadow-lg grid grid-rows-6 bg-gray-100'>
       <div class='row-span-1 h-full bg-gray-200'>
-        <EmailActions emails={data} activeMailbox={contextData.activeMailbox} />
+        <EmailActions
+          emails={data}
+          activeMailbox={contextData.activeMailbox}
+          onDeleteClick={onDeleteClick}
+          selectAll={selectAll}
+        />
       </div>
       <div class='grid row-span-5 h-full overflow-scroll'>
-        <EmailList emails={data} />
+        <EmailList
+          emails={data}
+          onEmailRowSelect={onEmailRowSelect}
+          selectedEmails={selectedEmails}
+        />
       </div>
     </div>
   );

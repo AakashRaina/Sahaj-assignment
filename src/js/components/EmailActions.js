@@ -6,7 +6,7 @@ import { BsForwardFill } from "react-icons/bs";
 import { MdMarkunread } from "react-icons/md";
 import { RiSpamFill } from "react-icons/ri";
 
-function EmailActions({ emails, activeMailbox }) {
+function EmailActions({ emails, activeMailbox, onDeleteClick, selectAll }) {
   const showUnReadCount = () => {
     if (emails.length === 0) return `(0)`;
     else return `(16)`;
@@ -22,19 +22,19 @@ function EmailActions({ emails, activeMailbox }) {
       </div>
       <div class='actions bg-white border-b flex flex-row items-center justify-around'>
         <span style={{ marginLeft: "40px" }}>
-          <ImCheckboxUnchecked />
+          <ImCheckboxUnchecked onClick={selectAll} />
         </span>
         <span>
-          <BsForwardFill /> Forward
+          <BsForwardFill color='green' /> Forward
+        </span>
+        <span onClick={onDeleteClick}>
+          <AiOutlineDelete color='red' /> Delete
         </span>
         <span>
-          <AiOutlineDelete /> Delete
+          <MdMarkunread color='blue' /> Read
         </span>
         <span>
-          <MdMarkunread /> Read
-        </span>
-        <span>
-          <RiSpamFill /> Spam
+          <RiSpamFill color='black' /> Spam
         </span>
       </div>
     </div>

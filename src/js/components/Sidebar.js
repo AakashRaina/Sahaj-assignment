@@ -26,6 +26,7 @@ function Sidebar(props) {
                   ? `active text-white`
                   : null
               }`}
+              key={idx}
               onClick={onMailboxClick}
             >
               {option}

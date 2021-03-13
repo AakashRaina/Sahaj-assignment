@@ -2,19 +2,17 @@ import React, { useState } from "react";
 import "../../css/EmailRow.styl";
 import { ImCheckboxUnchecked, ImCheckboxChecked } from "react-icons/im";
 
-function EmailRow({ email }) {
-  const [isChecked, setisChecked] = useState(false);
-
-  const handleClick = () => setisChecked((prevState) => !prevState);
+function EmailRow({ email, onEmailRowSelect, selectedEmails }) {
+  const handleClick = () => onEmailRowSelect(email.id);
 
   return (
     <div
       class={`email-row border-b border-gray-200 flex flex-row ${
         email.status === "UNREAD" ? "bg-gray-100" : "bg-white"
-      } ${isChecked ? "bg-blue-200" : ""}`}
+      } ${selectedEmails.includes(email.id) ? "bg-blue-200" : ""}`}
     >
       <span class='action flex'>
-        {isChecked ? (
+        {selectedEmails.includes(email.id) ? (
           <ImCheckboxChecked onClick={handleClick} />
         ) : (
           <ImCheckboxUnchecked onClick={handleClick} />

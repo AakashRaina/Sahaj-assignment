@@ -1,6 +1,6 @@
 export const EMAILS = [
   {
-    id: "1234567",
+    id: 10,
     status: "READ",
     from: "aakashraina9@gmail.com",
     to: ["test@gmail.com", "mockdata@gmail.com"],
@@ -10,7 +10,7 @@ export const EMAILS = [
     date: "2/12/21",
   },
   {
-    id: "1234545",
+    id: 11,
     status: "UNREAD",
     from: "aakashraina9@gmail.com",
     to: ["test@gmail.com", "mockdata@gmail.com"],
@@ -20,7 +20,7 @@ export const EMAILS = [
     date: "2/10/21",
   },
   {
-    id: "1234457",
+    id: 12,
     status: "READ",
     from: "aakashraina9@gmail.com",
     to: ["test@gmail.com", "mockdata@gmail.com"],
@@ -30,7 +30,7 @@ export const EMAILS = [
     date: "5/12/21",
   },
   {
-    id: "1334567",
+    id: 13,
     status: "UNREAD",
     from: "aakashraina9@gmail.com",
     to: ["test@gmail.com", "mockdata@gmail.com"],
@@ -40,7 +40,7 @@ export const EMAILS = [
     date: "2/12/21",
   },
   {
-    id: "2234567",
+    id: 14,
     status: "UNREAD",
     from: "aakashraina9@gmail.com",
     to: ["test@gmail.com", "mockdata@gmail.com"],
@@ -50,7 +50,7 @@ export const EMAILS = [
     date: "2/12/21",
   },
   {
-    id: "1234568",
+    id: 15,
     status: "UNREAD",
     from: "aakashraina9@gmail.com",
     to: ["test@gmail.com", "mockdata@gmail.com"],
@@ -60,7 +60,7 @@ export const EMAILS = [
     date: "2/12/21",
   },
   {
-    id: "1234569",
+    id: 16,
     status: "READ",
     from: "aakashraina9@gmail.com",
     to: ["test@gmail.com", "mockdata@gmail.com"],
@@ -70,7 +70,7 @@ export const EMAILS = [
     date: "2/12/21",
   },
   {
-    id: "1234500",
+    id: 17,
     status: "UNREAD",
     from: "aakashraina9@gmail.com",
     to: ["test@gmail.com", "mockdata@gmail.com"],
@@ -80,7 +80,7 @@ export const EMAILS = [
     date: "2/12/21",
   },
   {
-    id: "1234565",
+    id: 18,
     status: "UNREAD",
     from: "aakashraina9@gmail.com",
     to: ["test@gmail.com", "mockdata@gmail.com"],
@@ -90,7 +90,7 @@ export const EMAILS = [
     date: "2/12/21",
   },
   {
-    id: "1234533",
+    id: 19,
     status: "UNREAD",
     from: "aakashraina9@gmail.com",
     to: ["test@gmail.com", "mockdata@gmail.com"],
@@ -100,7 +100,7 @@ export const EMAILS = [
     date: "2/12/21",
   },
   {
-    id: "1234544",
+    id: 20,
     status: "UNREAD",
     from: "aakashraina9@gmail.com",
     to: ["test@gmail.com", "mockdata@gmail.com"],
@@ -110,17 +110,7 @@ export const EMAILS = [
     date: "2/12/21",
   },
   {
-    id: "1234522",
-    status: "READ",
-    from: "aakashraina9@gmail.com",
-    to: ["test@gmail.com", "mockdata@gmail.com"],
-    cc: ["test@gmail.com", "mockdata@gmail.com"],
-    subject: "Coding Assignment - UI - Sahaj Software Solutions",
-    body: "Lipsum text here",
-    date: "2/12/21",
-  },
-  {
-    id: "1234566",
+    id: "21",
     status: "READ",
     from: "aakashraina9@gmail.com",
     to: ["test@gmail.com", "mockdata@gmail.com"],
@@ -130,7 +120,17 @@ export const EMAILS = [
     date: "2/12/21",
   },
   {
-    id: "1234500",
+    id: "22",
+    status: "READ",
+    from: "aakashraina9@gmail.com",
+    to: ["test@gmail.com", "mockdata@gmail.com"],
+    cc: ["test@gmail.com", "mockdata@gmail.com"],
+    subject: "Coding Assignment - UI - Sahaj Software Solutions",
+    body: "Lipsum text here",
+    date: "2/12/21",
+  },
+  {
+    id: "23",
     status: "UNREAD",
     from: "aakashraina9@gmail.com",
     to: ["test@gmail.com", "mockdata@gmail.com"],
