@@ -75,6 +75,7 @@ const webpackDevConfig = (_) => {
     devServer: {
       port: 5000,
       compress: true,
+      historyApiFallback: true,
     },
     devtool: "eval-source-map",
   };
