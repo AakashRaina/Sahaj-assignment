@@ -5,16 +5,19 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { BsForwardFill } from "react-icons/bs";
 import { MdMarkunread } from "react-icons/md";
 import { RiSpamFill } from "react-icons/ri";
-import AppContext from "../store/context";
 
-function EmailActions(props) {
-  const contextData = useContext(AppContext);
+function EmailActions({ emails, activeMailbox }) {
+  const showUnReadCount = () => {
+    if (emails.length === 0) return `(0)`;
+    else return `(16)`;
+  };
 
   return (
     <div class='email-actions flex flex-col'>
       <div class='header flex items-center'>
         <span class='pl-8 text-xl font-bold'>
-          {contextData.activeMailbox}(16)
+          {activeMailbox}
+          {showUnReadCount()}
         </span>
       </div>
       <div class='actions bg-white border-b flex flex-row items-center justify-around'>

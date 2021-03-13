@@ -22,7 +22,9 @@ function Sidebar(props) {
           return (
             <span
               class={`bg-blue-100 mb-4 p-2 ${
-                idx === 0 ? `active text-white` : null
+                contextData.activeMailbox === option
+                  ? `active text-white`
+                  : null
               }`}
               onClick={onMailboxClick}
             >
