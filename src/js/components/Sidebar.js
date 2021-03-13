@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../../css/Sidebar.styl";
 import { BiPencil } from "react-icons/bi";
 import { SIDEBAR_OPTIONS } from "../mockdata/data";
+import AppContext from "../store/context";
 
 function Sidebar(props) {
+  const contextData = useContext(AppContext);
+
+  const onMailboxClick = (e) =>
+    contextData.setActiveMailBox(e.target.innerText);
+
   return (
     <div class='sidebar-container h-full flex flex-col'>
       <div class='compose flex justify-center items-center'>
@@ -18,6 +24,7 @@ function Sidebar(props) {
               class={`bg-blue-100 mb-4 p-2 ${
                 idx === 0 ? `active text-white` : null
               }`}
+              onClick={onMailboxClick}
             >
               {option}
             </span>
