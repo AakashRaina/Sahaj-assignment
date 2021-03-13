@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import "../../css/EmailActions.styl";
 import { ImCheckboxUnchecked, ImCheckboxChecked } from "react-icons/im";
 import { AiOutlineDelete } from "react-icons/ai";
@@ -7,22 +7,42 @@ import { MdMarkunread } from "react-icons/md";
 import { RiSpamFill } from "react-icons/ri";
 
 function EmailActions({ emails, activeMailbox, onDeleteClick, selectAll }) {
+  const [isCheckboxSelected, setisCheckboxSelected] = useState(false);
+
   const showUnReadCount = () => {
     if (emails.length === 0) return `(0)`;
-    else return `(16)`;
+    else {
+      const count = emails.reduce((acc, item) => {
+        if (item.status === "UNREAD") {
+          acc = acc + 1;
+        }
+
+        return acc;
+      }, 0);
+
+      return `(${count})`;
+    }
+  };
+
+  const handleCheckboxClick = () => {
+    setisCheckboxSelected((prevState) => !prevState);
+    selectAll();
   };
 
   return (
     <div class='email-actions flex flex-col'>
       <div class='header flex items-center'>
         <span class='pl-8 text-xl font-bold'>
-          {activeMailbox}
-          {showUnReadCount()}
+          {activeMailbox} {showUnReadCount()}
         </span>
       </div>
       <div class='actions bg-white border-b flex flex-row items-center justify-around'>
         <span style={{ marginLeft: "40px" }}>
-          <ImCheckboxUnchecked onClick={selectAll} />
+          {isCheckboxSelected ? (
+            <ImCheckboxChecked onClick={handleCheckboxClick} />
+          ) : (
+            <ImCheckboxUnchecked onClick={handleCheckboxClick} />
+          )}
         </span>
         <span>
           <BsForwardFill color='green' /> Forward
