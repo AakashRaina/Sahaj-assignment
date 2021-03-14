@@ -13,7 +13,10 @@ function Sidebar(props) {
   return (
     <div class='sidebar-container h-full flex flex-col'>
       <div class='compose flex justify-center items-center'>
-        <div class='button rounded-full flex justify-center items-center bg-blue-400 text-white font-bold'>
+        <div
+          class='button rounded-full flex justify-center items-center bg-blue-400 text-white font-bold'
+          onClick={contextData.toggleComposeModal}
+        >
           <BiPencil /> Compose
         </div>
       </div>
