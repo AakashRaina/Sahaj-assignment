@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import "../../css/EmailRow.styl";
 import { ImCheckboxUnchecked, ImCheckboxChecked } from "react-icons/im";
 
 function EmailRow({ email, onEmailRowSelect, selectedEmails, onEmailClick }) {
-  const handleClick = () => onEmailRowSelect(email.id);
+  const handleClick = (e) => {
+    e.stopPropagation();
+    onEmailRowSelect(email.id);
+  };
 
-  const readEmail = () => onEmailClick(email.id);
+  const readEmail = (e) => onEmailClick(email.id);
 
   return (
     <div
