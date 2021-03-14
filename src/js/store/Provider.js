@@ -20,7 +20,13 @@ function Provider({ children }) {
       }}
     >
       {children}
-      {createPortal(<ComposeModal showCompose={showCompose} />, document.body)}
+      {createPortal(
+        <ComposeModal
+          showCompose={showCompose}
+          toggleComposeModal={toggleComposeModal}
+        />,
+        document.body
+      )}
     </AppContext.Provider>
   );
 }
