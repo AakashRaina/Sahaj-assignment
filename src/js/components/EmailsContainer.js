@@ -12,6 +12,8 @@ function EmailsContainer(props) {
 
   useEffect(() => {
     if (contextData.activeMailbox === "Inbox") return setdata(EMAILS);
+    else if (contextData.activeMailbox === "Sent")
+      return setdata(JSON.parse(localStorage.getItem("sentItems")));
     else setdata([]);
   }, [contextData.activeMailbox]);
 
