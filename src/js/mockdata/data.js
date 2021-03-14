@@ -148,3 +148,8 @@ export const SIDEBAR_OPTIONS = [
   "Important",
   "Drafts",
 ];
+
+export const credentials = {
+  username: "aakash",
+  passwd: "12345",
+};

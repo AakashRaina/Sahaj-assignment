@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Login from "./components/Login";
 import Home from "./components/Home";
-import "../css/App";
+import "css/App";
 
 class App extends Component {
   render() {
@@ -12,14 +12,23 @@ class App extends Component {
           exact
           path='/'
           render={() => {
-            return <Redirect to='/login' />;
+            const value = localStorage.getItem("isAuthenticated");
+            if (value === "true") return <Redirect to='/home' />;
+            else return <Redirect to='/login' />;
           }}
         />
         <Route path='/login' component={Login} />
-        <Route path='/home' component={Home} />
+        <ProtectedRoute path='/home' component={Home} />
       </Switch>
     );
   }
 }
+
+const ProtectedRoute = (props) => {
+  const value = localStorage.getItem("isAuthenticated");
+
+  if (value !== "true") return <Redirect to='/login' />;
+  else return <Route {...props} />;
+};
 
 export default App;
