@@ -11,7 +11,7 @@ function EmailList({ emails, onEmailRowSelect, selectedEmails, onEmailClick }) {
   }
 
   return (
-    <React.Fragment>
+    <div>
       {emails.map((email) => (
         <EmailRow
           email={email}
@@ -21,7 +21,7 @@ function EmailList({ emails, onEmailRowSelect, selectedEmails, onEmailClick }) {
           onEmailClick={onEmailClick}
         />
       ))}
-    </React.Fragment>
+    </div>
   );
 }
 
