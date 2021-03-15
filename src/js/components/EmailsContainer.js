@@ -43,6 +43,9 @@ function EmailsContainer(props) {
       (email) => !selectedEmails.includes(email.id)
     );
     setdata(filteredData);
+
+    if (contextData.activeMailbox === "Sent")
+      localStorage.setItem("sentItems",JSON.stringify(filteredData));
   };
 
   const onEmailClick = (id) => {
