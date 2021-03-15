@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "css/ComposeModal.styl";
 import { AiFillCloseCircle } from "react-icons/ai";
+import AppContext from "../store/context";
 
 function ComposeModal({ showCompose, toggleComposeModal }) {
+  const context = useContext(AppContext);
+
   const send = (e) => {
     e.preventDefault();
 
@@ -34,6 +37,13 @@ function ComposeModal({ showCompose, toggleComposeModal }) {
     } else {
       localStorage.setItem("sentItems", JSON.stringify([sentMail]));
     }
+
+    if (context.activeMailbox === "Sent") {
+      const { data: sentMails } = context;
+      sentMails.push(sentMail);
+      context.setdata(sentMails);
+    }
+
     toggleComposeModal();
   };
 

@@ -6,17 +6,17 @@ import AppContext from "../store/context";
 import { EMAILS } from "../mockdata/data";
 
 function EmailsContainer(props) {
-  const contextData = useContext(AppContext);
-  const [data, setdata] = useState([]);
+  const context = useContext(AppContext);
+  const { data } = context;
   const [selectedEmails, setselectedEmails] = useState([]);
 
   useEffect(() => {
     setselectedEmails([]);
-    if (contextData.activeMailbox === "Inbox") return setdata(EMAILS);
-    else if (contextData.activeMailbox === "Sent")
-      return setdata(JSON.parse(localStorage.getItem("sentItems")));
-    else setdata([]);
-  }, [contextData.activeMailbox]);
+    if (context.activeMailbox === "Inbox") return context.setdata(EMAILS);
+    else if (context.activeMailbox === "Sent")
+      return context.setdata(JSON.parse(localStorage.getItem("sentItems")));
+    else context.setdata([]);
+  }, [context.activeMailbox]);
 
   const onEmailRowSelect = (id) => {
     if (selectedEmails.includes(id)) {
@@ -43,9 +43,9 @@ function EmailsContainer(props) {
     const filteredData = data.filter(
       (email) => !selectedEmails.includes(email.id)
     );
-    setdata(filteredData);
+    context.setdata(filteredData);
 
-    if (contextData.activeMailbox === "Sent")
+    if (context.activeMailbox === "Sent")
       localStorage.setItem("sentItems", JSON.stringify(filteredData));
   };
 
@@ -59,7 +59,7 @@ function EmailsContainer(props) {
       else return email;
     });
 
-    setdata(emails);
+    context.setdata(emails);
   };
 
   return (
@@ -67,7 +67,7 @@ function EmailsContainer(props) {
       <div class='row-span-1 h-full bg-gray-200'>
         <EmailActions
           emails={data}
-          activeMailbox={contextData.activeMailbox}
+          activeMailbox={context.activeMailbox}
           onDeleteClick={onDeleteClick}
           selectAll={selectAll}
         />

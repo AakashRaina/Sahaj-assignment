@@ -4,8 +4,11 @@ import AppContext from "./context";
 import ComposeModal from "../components/ComposeModal";
 
 function Provider({ children }) {
+  const [data, setdata] = useState([]);
   const [mailBox, setmailBox] = useState("Inbox");
   const [showCompose, setshowCompose] = useState(false);
+
+  const setEmails = (data) => setdata(data);
 
   const setActiveMailBox = (mailBox) => setmailBox(mailBox);
 
@@ -14,7 +17,9 @@ function Provider({ children }) {
   return (
     <AppContext.Provider
       value={{
+        data: data,
         activeMailbox: mailBox,
+        setdata: setEmails,
         setActiveMailBox: setActiveMailBox,
         toggleComposeModal: toggleComposeModal,
       }}
