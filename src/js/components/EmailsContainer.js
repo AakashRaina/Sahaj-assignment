@@ -11,6 +11,7 @@ function EmailsContainer(props) {
   const [selectedEmails, setselectedEmails] = useState([]);
 
   useEffect(() => {
+    setselectedEmails([]);
     if (contextData.activeMailbox === "Inbox") return setdata(EMAILS);
     else if (contextData.activeMailbox === "Sent")
       return setdata(JSON.parse(localStorage.getItem("sentItems")));
@@ -45,7 +46,7 @@ function EmailsContainer(props) {
     setdata(filteredData);
 
     if (contextData.activeMailbox === "Sent")
-      localStorage.setItem("sentItems",JSON.stringify(filteredData));
+      localStorage.setItem("sentItems", JSON.stringify(filteredData));
   };
 
   const onEmailClick = (id) => {

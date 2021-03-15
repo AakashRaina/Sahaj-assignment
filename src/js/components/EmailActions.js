@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../css/EmailActions.styl";
 import { ImCheckboxUnchecked, ImCheckboxChecked } from "react-icons/im";
 import { AiOutlineDelete } from "react-icons/ai";
@@ -8,6 +8,10 @@ import { RiSpamFill } from "react-icons/ri";
 
 function EmailActions({ emails, activeMailbox, onDeleteClick, selectAll }) {
   const [isCheckboxSelected, setisCheckboxSelected] = useState(false);
+
+  useEffect(() => {
+    setisCheckboxSelected(false);
+  }, [activeMailbox]);
 
   const showUnReadCount = () => {
     if (emails.length === 0) return `(0)`;
@@ -29,6 +33,11 @@ function EmailActions({ emails, activeMailbox, onDeleteClick, selectAll }) {
     selectAll();
   };
 
+  const handleDelete = () => {
+    onDeleteClick();
+    setisCheckboxSelected(false);
+  };
+
   return (
     <div class='email-actions flex flex-col'>
       <div class='header flex items-center'>
@@ -47,7 +56,7 @@ function EmailActions({ emails, activeMailbox, onDeleteClick, selectAll }) {
         <span>
           <BsForwardFill color='green' /> Forward
         </span>
-        <span onClick={onDeleteClick}>
+        <span onClick={handleDelete}>
           <AiOutlineDelete color='red' /> Delete
         </span>
         <span>
